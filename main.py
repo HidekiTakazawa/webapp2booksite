@@ -6,7 +6,6 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext import db
 from google.appengine.ext.db import Key
-from django.utils import simplejson as json
 
 # DWW
 import os
@@ -15,7 +14,7 @@ import urllib
 
 # DEAN
 import logging
-import re
+#import re
 ###
 
 
@@ -29,7 +28,8 @@ class BooksData(db.Model):
 class MainPage(webapp2.RequestHandler):
     def get(self):
         path = os.path.join(os.path.dirname(__file__), 'templates/toppage.html')
-        self.response.out.write(template.render(path))
+        template_values = {}
+        self.response.out.write(template.render(path, template_values))
   
 class StoreAValue(webapp2.RequestHandler):    
 
