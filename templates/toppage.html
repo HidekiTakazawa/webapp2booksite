@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Submit a form</title>
+   <link rel="stylesheet" type="text/css" href="/static/stylesheet.css">
+  </head>
+  <body>
+    <div id="container">
+      <div class="pagetitle">
+        <h1>Submit a form</h1>
+      </div>
+      <div id="main">
+        <form method="post" action="/database_new" >
+          <label for="bookname"> Book Name:</label>
+          <input type="text" name="bookname"><br />
+          <label for="author">Author:</label>
+          <input type="text" name="author"><br />
+          <label for="publisher">Publisher:</label>
+          <input type="text" name="publisher"><br />
+          <label for="purchasedate">Purchase Date:</label>
+          <input type="text" name="purchasedate"><br />
+          <label for="price">Price:</label>
+          <input type="text" name="price"><br />
+          <label for="memo">Memo:</label>
+          <input type="text" name="memo"><br />
+          <input type="submit" name="add"  value="追加">
+       </form>
+        
+	<hr>
+        
+      </div>
+      
+      
+      <form method="GET" action="/database_all">
+          <input type="submit" name="alldisplay" value="全件表示">
+          
+
+      </form>
+      
+    </div>
+  </body>
+</html>

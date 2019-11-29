@@ -1,0 +1,29 @@
+<html>
+ <head>
+   <title>Submitted form</title>
+   <link rel="stylesheet" type="text/css" href="/static/stylesheet.css">
+ </head>
+ <body>
+   <div id="container">
+     <div class="pagetitle">
+       <h1>Form submitted</h1>
+     </div>
+     <div id="main">
+       
+       <p>Here's a review of the information that you sent:</p>
+       <p>
+          <strong>Book Name</strong>: {{bookname}} <br>
+          <strong>Author</strong>: {{author}} <br>
+          <strong>Publisher</strong>: {{publisher}} <br>
+          <strong>Purchase Date</strong>: {{purchasedate}} <br>
+          <strong>Price</strong>: {{price}} <br>
+          <strong>Memo</strong>: {{memo}}
+
+       </p>
+       <form action="/" method="GET">
+         <input type="submit" value="Back to TopPage">
+       </form>
+     </div>
+   </div>
+ </body>
+</html>

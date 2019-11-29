@@ -1,0 +1,36 @@
+<!doctype html>
+<head>
+  <title>Datastore All Display</title>
+</head>
+<body>
+    <form action="/" method="GET">
+       <input type="su bmit" value="Back to TopPage">
+    </form>
+
+  
+  <table border="1">
+    <tr>
+      <th>Book Name</th>
+      <th>Author</th>
+      <th>Publisher</th>
+    </tr>
+      {% for bookdata in booksData %}
+      <tr>
+        <td>{{ bookdata.bookname }}</td>
+        <td>{{ bookdata.author }}</td>
+        <td>{{ bookdata.publisher }}</td>
+        <td>{{ bookdata.key }}</td>
+        <td> 
+          <form action="/database_delete" method="POST">
+            <input type="hidden" name="bookdata_key" value="{{bookdata.key}}">
+            <input type="submit" value="Delete">
+          </form>
+        </td>
+      </tr>
+      
+      {% endfor %}
+
+  </table>
+    
+  
+</body>
