@@ -1,0 +1,43 @@
+<!doctype html>
+<head>
+  <title>Datastore All Display</title>
+</head>
+<body>
+    <form action="/database_new" method="GET">
+       <input type="submit" value="新規入力">
+    </form>
+
+  
+  <table border="1">
+    <tr>
+      <th>書名</th>
+      <th>著者</th>
+      <th>出版社</th>
+      <th>購入日</th>
+      <th>値段</th>
+      <th>メモ</th>
+
+    </tr>
+      {% for bookdata in booksData %}
+      <tr>
+        <td>{{ bookdata.bookname }}</td>
+        <td>{{ bookdata.author }}</td>
+        <td>{{ bookdata.publisher }}</td>
+        <td>{{ bookdata.purchasedate }}</td>
+        <td>{{ bookdata.price }}</td>
+        <td>{{ bookdata.memo }}</td>
+
+        <td> 
+          <form action="/bookdata.key/database_update" method="POST">
+            <input type="hidden" name="bookdata_key" value="{{bookdata.key}}">
+            <input type="submit" value="Edit">
+          </form>
+        </td>
+      </tr>
+      
+      {% endfor %}
+
+  </table>
+    
+  
+</body>
