@@ -1,6 +1,6 @@
 # coding: UTF-8
 import webapp2
-
+#import jinja2
 import logging
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
@@ -16,7 +16,10 @@ import urllib
 import logging
 #import re
 ###
-
+#JINJA_ENVIRONMENT = jinja2.Environment(
+#    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+#    extensions=['jinja2.ext.autoescape'],
+#    autoescape=True)
 
 class BooksData(db.Model):
     bookname = db.StringProperty()
@@ -58,20 +61,25 @@ class UpdateHandler(webapp2.RequestHandler):
         bookdata_key = self.request.get('bookdata_key')
         key = db.Key(bookdata_key)
         bookdata = db.get(key)
-        template_values = {"bookname":bookdata.bookname, "author": bookdata.author, "publisher":bookdata.publisher, 
-                "purchasedate":bookdata.purchasedate, "price":bookdata.price, "memo":bookdata.memo}
+        bookname = bookdata.bookname
+        template_values = {"bookname": bookname, "author": bookdata.author,
+            "publisher": bookdata.publisher, 
+            "purchasedate": bookdata.purchasedate, 
+            "price": bookdata.price, "memo": bookdata.memo, "key": bookdata_key}
         path = os.path.join(os.path.dirname(__file__), 'templates/databaseUpdate.html')
         self.response.out.write(template.render(path, template_values))
+        #template = JINJA_ENVIRONMENT.get_template('templates/databaseUpdate.html')
+        #self.response.write(template.render(template_values))
     def post(self):
         bookdata_key = self.request.get('bookdata_key')
         key = db.Key(bookdata_key)
         bookdata = db.get(key)
-        bookname = self.request.get('bookname')
-        author = self.request.get('author')
-        publisher = self.request.get('publisher')
-        purchasedate = self.request.get('purchasedate')
-        price = self.request.get('price')
-        memo = self.request.get('memo')
+        bookdata.bookname = self.request.get('bookname')
+        bookdata.author = self.request.get('author')
+        bookdata.publisher = self.request.get('publisher')
+        bookdata.purchasedate = self.request.get('purchasedate')
+        bookdata.price = self.request.get('price')
+        bookdata.memo = self.request.get('memo')
         bookdata.put()
         self.redirect('/')
 class DeleteEntry(webapp2.RequestHandler):

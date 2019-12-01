@@ -28,7 +28,7 @@
         <td>{{ bookdata.memo }}</td>
 
         <td> 
-          <form action="/bookdata.key/database_update" method="POST">
+          <form action="/database_update" method="GET">
             <input type="hidden" name="bookdata_key" value="{{bookdata.key}}">
             <input type="submit" value="Edit">
           </form>
