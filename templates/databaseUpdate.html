@@ -12,18 +12,18 @@
       </div>
       <div id="main">
         <form method="post" action="/database_update" >
-          <label for="bookname"> Book Name:</label>
-          <input type="text" name="bookname"　value="{{ bookname }}"><br />
-          <label for="author">Author:</label>
-          <input type="text" name="author" value="{{ author }}"><br />
-          <label for="publisher">Publisher:</label>
-          <input type="text" name="publisher" value="{{ publisher }}"><br />
-          <label for="purchasedate">Purchase Date:</label>
-          <input type="text" name="purchasedate" value="{{ purchasedate }}"><br />
-          <label for="price">Price:</label>
-          <input type="text" name="price" value="{{ price }}"><br />
-          <label for="memo">Memo:</label>
-          <input type="text" name="memo" value="{{ memo }}"><br />
+          <label for="bookname"> 書名:</label>
+          <input type="text" name="bookname"　value="{{ bookname }}" size="50"><br />
+          <label for="author">著者:</label>
+          <input type="text" name="author" value="{{ author }}" size="30"><br />
+          <label for="publisher">出版社:</label>
+          <input type="text" name="publisher" value="{{ publisher }}" size="50"><br />
+          <label for="purchasedate">購入日:</label>
+          <input type="text" name="purchasedate" value="{{ purchasedate }}" size="20"><br />
+          <label for="price">値段:</label>
+          <input type="text" name="price" value="{{ price }}" size="10"><br />
+          <label for="memo">メモ:</label>
+          <input type="text" name="memo" value="{{ memo }}" size="100"><br />
           <input type="hidden" name="bookdata_key" value="{{key}}">
           <input type="submit" name="update"  value="変更更新">
        </form>
